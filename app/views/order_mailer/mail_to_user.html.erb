@@ -1,0 +1,13 @@
+<%= @order.name %>様<br>
+
+この度はご注文いただきまして、誠にありがとうございます。<br>
+
+以下の内容でご注文を承りました。<br>
+
+[注文内容]<br>
+<%= @order.order_products.each do |order_product| %>
+<%= t('activerecord.attributes.order_product.product_id') %>:<%= order_product.name_and_price_text %><br>
+<%= t('activerecord.attributes.order_product.quantity') %>:<%= order_product.quantity %><br>
+<% end %>
+  
+  [合計金額]<%= number_to_currency(@order.total_price) %>(税込)<br>
